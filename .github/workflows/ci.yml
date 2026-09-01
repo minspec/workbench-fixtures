@@ -12,6 +12,10 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
+      - name: term wall
+        uses: minspec/.github/.github/actions/term-wall@6175b67bd0df4710dd0bb8b79df413b452265c6c # minspec/.github#8
+        env:
+          TERM_WALL: ${{ vars.TERM_WALL }}
       - name: JSON validity
         run: find . -name '*.json' -not -path './.git/*' -print0 | xargs -0 -r -n1 jq empty
       - name: YAML validity
