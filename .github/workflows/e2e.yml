@@ -1,0 +1,16 @@
+name: e2e
+# Caller of the org's canonical road test (minspec/workbench e2e.yml):
+# this repo's PR rides in its own slot, siblings at dev. One test,
+# no copies to drift.
+on:
+  pull_request:
+  push:
+    branches: [dev, master]
+permissions:
+  contents: read
+jobs:
+  e2e:
+    uses: minspec/workbench/.github/workflows/e2e.yml@dev
+    with:
+      fixtures_ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      workbench_ref: dev
