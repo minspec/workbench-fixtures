@@ -10,7 +10,7 @@ permissions:
   contents: read
 jobs:
   e2e:
-    uses: minspec/workbench/.github/workflows/e2e.yml@dev
+    uses: minspec/workbench/.github/workflows/e2e.yml@a84bc5568a33220fd7b4037345c2b38186cff29d # dev
     with:
       fixtures_ref: ${{ github.event.pull_request.head.sha || github.sha }}
       workbench_ref: dev
